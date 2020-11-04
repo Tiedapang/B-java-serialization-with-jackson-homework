@@ -1,6 +1,10 @@
 package com.thoughtworks.capability.gtb.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.thoughtworks.capability.gtb.serializer.AgeSerializer;
+import com.thoughtworks.capability.gtb.serializer.TimeSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class PersonVo {
 
   private String id;
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonSerialize(nullsUsing = AgeSerializer.class)
   private Integer age;
   private String name;
   @JsonInclude(value= JsonInclude.Include.NON_NULL)
